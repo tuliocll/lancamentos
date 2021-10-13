@@ -67,7 +67,7 @@ export default async function exportDebit(
 
   //Write Column Title in Excel file
   let headingColumnIndex = 1;
-  headingColumnNames.forEach((heading) => {
+  headingColumnNames.forEach((heading: any) => {
     let index = headingColumnIndex++;
     ws.cell(1, index).string(heading).style(headerStyle);
 
@@ -77,7 +77,7 @@ export default async function exportDebit(
   ws.row(1).setHeight(40);
   //Write Data in Excel file
   let rowIndex = 2;
-  data.forEach((record) => {
+  data.forEach((record: any) => {
     let columnIndex = 1;
     Object.keys(record).forEach((columnName) => {
       if (typeof record[columnName] === "object") {
@@ -90,5 +90,6 @@ export default async function exportDebit(
     });
     rowIndex++;
   });
+  //@ts-ignore
   wb.write("TeacherData.xlsx", res);
 }
