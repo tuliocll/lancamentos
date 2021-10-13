@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "debit" ALTER COLUMN "agency" DROP NOT NULL,
+ALTER COLUMN "agency" DROP DEFAULT;

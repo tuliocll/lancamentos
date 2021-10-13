@@ -1,0 +1,16 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/debits/new": "pages/debits/new.js",
+  "/debits": "pages/debits.js",
+  "/api/debits": "pages/api/debits.js",
+  "/api/debits/export": "pages/api/debits/export.js",
+  "/debits/[id]": "pages/debits/[id].js",
+  "/api/services": "pages/api/services.js",
+  "/api/debits/[id]": "pages/api/debits/[id].js",
+  "/api/status": "pages/api/status.js",
+  "/api/operations": "pages/api/operations.js",
+  "/api/peoples": "pages/api/peoples.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+}
