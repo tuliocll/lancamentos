@@ -68,7 +68,7 @@ const Datatable = <DataType extends object>(
     const titles = columns.map((col) => col.title);
 
     download(
-      `http://localhost:3000/api/debits/export?cols=${JSON.stringify(
+      `${process.env.HOST}/api/debits/export?cols=${JSON.stringify(
         cols
       )}&titles=${JSON.stringify(titles)}`,
       "teste"

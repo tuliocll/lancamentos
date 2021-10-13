@@ -55,7 +55,7 @@ export default function ListDebits() {
     <>
       <Datatable
         columns={columns}
-        path="http://localhost:3000/api/debits"
+        path={`${process.env.HOST}/api/debits`}
         title="Despesas"
         actions={actions}
       />
