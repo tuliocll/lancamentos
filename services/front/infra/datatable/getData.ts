@@ -13,9 +13,11 @@ export function getData<DataType extends object>({
     return api(path).then((response) => response.json());
   }
 
+  //TODO: pegar filters e transformar em query params
+
   const orderBy = query.orderBy ? `&sortBy=${query.orderBy.field}` : "";
   const orderDirection = query.orderDirection
-    ? `&sorting=${query.orderDirection.toLocaleUpperCase()}`
+    ? `&sorting=${query.orderDirection}`
     : "";
 
   const search = query.search ? `&param=${query.search}` : "";

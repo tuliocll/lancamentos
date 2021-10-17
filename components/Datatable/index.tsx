@@ -6,8 +6,13 @@ import React, {
   useImperativeHandle,
   Ref,
 } from "react";
-import { ExportCsv, ExportPdf } from "@material-table/exporters";
-import MaterialTable, { Query, Column, Action } from "@material-table/core";
+import { ExportPdf } from "@material-table/exporters";
+import MaterialTable, {
+  Query,
+  Column,
+  Action,
+  Filter,
+} from "@material-table/core";
 import useSwr from "swr";
 
 import { getData } from "../../services/front/infra/datatable/getData";
@@ -35,6 +40,11 @@ const Datatable = <DataType extends object>(
 ) => {
   const [query, setQuery] = useState<Partial<Query<DataType>>>();
   const [page, setPage] = useState(0);
+  const [order, setOrder] = useState<{
+    field: string;
+    direction: "asc" | "desc";
+  }>({ field: "", direction: "asc" });
+  const [filters, setFilters] = useState<Filter<DataType>[]>();
   const [pageSize, setPageSize] = useState(5);
   const [search, setSearch] = useState("");
   const { data, mutate: refetch } = useSwr([path, query], () =>
@@ -75,13 +85,29 @@ const Datatable = <DataType extends object>(
     );
   }
 
+  function handleOrderChange(orderBy: number, direction: "asc" | "desc") {
+    setOrder({
+      field: (columns[orderBy]?.field as string) || "id",
+      direction,
+    });
+  }
+
+  function handleFilterChange(filter: Filter<DataType>[]) {
+    setFilters(filter);
+  }
+
   useEffect(() => {
     setQuery({
       page,
       pageSize,
       search,
+      orderDirection: order.direction,
+      orderBy: {
+        field: order.field,
+      },
+      filters,
     });
-  }, [page, pageSize, search]);
+  }, [page, pageSize, search, order, filters]);
 
   useEffect(() => {
     if (tableRef.current) {
@@ -106,6 +132,8 @@ const Datatable = <DataType extends object>(
       actions={actions}
       page={page}
       onPageChange={handlePageChange}
+      onFilterChange={handleFilterChange}
+      onOrderChange={handleOrderChange}
       onSearchChange={(text) => {
         setPage(0);
         setSearch(text);
@@ -120,18 +148,13 @@ const Datatable = <DataType extends object>(
         exportMenu: [
           {
             label: "Export PDF",
-            //// You can do whatever you wish in this function. We provide the
-            //// raw table columns and table data for you to modify, if needed.
-            // exportFunc: (cols, datas) => console.log({ cols, datas })
             exportFunc: (cols, datas) =>
               ExportPdf(cols, datas, "myPdfFileName"),
           },
           {
             label: "Export CSV",
             exportFunc: (cols, datas) => {
-              console.log(cols);
               handleExport(cols);
-              // ExportCsv(cols, datas, "myCsvFileName.xls");
             },
           },
         ],
