@@ -1,8 +1,8 @@
 # Sistema de lançamentos de despesas e receitas
 
-<center>
+<div align="center">
     <img src="https://cdn-icons-png.flaticon.com/512/888/888868.png" width="200">
-</center>
+</div>
 <p align="center">
 <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
 <img alt="Typescript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
