@@ -265,3 +265,5 @@ export default function New() {
     </>
   );
 }
+
+New.auth = true;

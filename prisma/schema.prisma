@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 
 }
@@ -13,42 +13,52 @@ generator client {
 }
 
 model Peoples {
-  id Int @default(autoincrement()) @id
+  id   Int    @id @default(autoincrement())
   name String
 }
 
 model Operations {
-  id Int @default(autoincrement()) @id
+  id   Int    @id @default(autoincrement())
   name String
 }
 
 model Status {
-  id Int @default(autoincrement()) @id
+  id   Int    @id @default(autoincrement())
   name String
 }
 
 model Services {
-  id Int @default(autoincrement()) @id
+  id   Int    @id @default(autoincrement())
   name String
 }
 
 model debit {
-  id Int @default(autoincrement()) @id
-  service String
-  account String
-  bank String
+  id          Int      @id @default(autoincrement())
+  service     String
+  account     String
+  bank        String
   description String?
-  document String
-  expiry DateTime
-  operation String
-  agency String?
-  paymentBy String
+  document    String
+  expiry      DateTime
+  operation   String
+  agency      String?
+  paymentBy   String
   paymentDate DateTime
-  pix String
-  provider String
+  pix         String
+  provider    String
   requestedBy String
-  status String
-  value String
-  created_at DateTime @default(now()) @map(name: "created_at")
-  updated_at DateTime @default(now()) @map(name: "updated_at")
+  status      String
+  value       String
+  created_at  DateTime @default(now()) @map(name: "created_at")
+  updated_at  DateTime @default(now()) @map(name: "updated_at")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String?  @unique
+  password  String?
+  image     String?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
 }

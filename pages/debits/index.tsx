@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Column, Action } from "@material-table/core";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
+import { useSession } from "next-auth/react";
 
 import Datatable from "../../components/Datatable";
 import { debit } from ".prisma/client";
@@ -62,3 +63,5 @@ export default function ListDebits() {
     </>
   );
 }
+
+ListDebits.auth = true;
