@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { Table, Button, Space } from "antd";
+import { Table, Button, Space, message, Popconfirm } from "antd";
 import useSwr from "swr";
 import Router from "next/router";
 
 import { getAllUsersService } from "../../services/front/modules/user/getAllUsers";
+import deleteUserService from "../../services/front/modules/user/deleteUser";
 
 export default function ListUsers() {
   const { data, mutate: refetch } = useSwr("/api/users", () =>
     getAllUsersService("/api/users")
   );
+
+  const [deletePopup, setDeletePopup] = useState(false);
 
   const [page, setPage] = useState(1);
   const [totalRegisters, setTotalRegisters] = useState(0);
@@ -37,7 +40,14 @@ export default function ListUsers() {
         console.log(record, "click");
         return (
           <Space size="middle">
-            <a onClick={() => handleDelete(record.id)}>Deletar</a>
+            <Popconfirm
+              title="Deseja deletar este usuário?"
+              onConfirm={() => handleDelete(record.id)}
+              okText="Sim"
+              cancelText="Não"
+            >
+              <a>Deletar</a>
+            </Popconfirm>
             <a onClick={() => handleEdit(record.id)}>Editar</a>
           </Space>
         );
@@ -45,7 +55,17 @@ export default function ListUsers() {
     },
   ];
 
-  function handleDelete(id: number) {}
+  async function handleDelete(id: number) {
+    // setDeletePopup(true);
+    const response = await deleteUserService(id);
+
+    if (!response) {
+      message.error("Não foi possível deletar o usuário");
+      return;
+    }
+
+    refetch();
+  }
 
   function handleEdit(id: number) {
     Router.push(`/users/${id}`);

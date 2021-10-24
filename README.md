@@ -26,11 +26,15 @@ Achei interessante deixar o projeto aberto caso alguém queira usar para algum o
 ## Principais funções / Roadmap
 
 - [x] Login
-- [x] Cadastro de usuários - em andamento
-- [x] Listar usuários - em andamento
-- [x] Editar usuários - em andamento
+- [x] Cadastro de usuários
+- [x] Listar usuários
+- [x] Editar usuários
+- [x] Deletar usuários
 - [x] Lançar despesas
 - [ ] Lançar receitas
+- [ ] Listar receitas
+- [ ] Atualizar receitas
+- [ ] Deletar receitas
 - [ ] Cadastrar pessoas
 - [ ] Cadastrar status
 - [ ] Cadastrar funcionarios
