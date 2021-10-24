@@ -28,8 +28,8 @@ export default function NewUser() {
 
     const response = await createUserService("/api/users", values);
 
-    if (!response) {
-      message.error("Não foi possível salvar");
+    if (typeof response === "object") {
+      message.error(response.message);
       return;
     }
 
