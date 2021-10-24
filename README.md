@@ -26,7 +26,9 @@ Achei interessante deixar o projeto aberto caso alguém queira usar para algum o
 ## Principais funções / Roadmap
 
 - [x] Login
-- [ ] Cadastro de usuários - em andamento
+- [x] Cadastro de usuários - em andamento
+- [x] Listar usuários - em andamento
+- [x] Editar usuários - em andamento
 - [x] Lançar despesas
 - [ ] Lançar receitas
 - [ ] Cadastrar pessoas
@@ -39,6 +41,7 @@ Achei interessante deixar o projeto aberto caso alguém queira usar para algum o
 - [x] Exportar despesa em XLS
 - [x] Filtros e buscas em relatorios
 - [ ] Filtros e buscas no excel
+- [ ] Pagina de 404
 
 ## Rodando
 
