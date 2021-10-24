@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import create from "../../../services/api/modules/status/create";
+import create from "../../../services/api/modules/users/create";
 import listAll from "../../../services/api/modules/users/listAll";
 
 export default async function handleStatus(
@@ -28,10 +28,12 @@ export default async function handleStatus(
     }
 
     case "POST": {
-      const { name } = req.body;
+      const { name, email, password } = req.body;
 
       const created = await create({
         name,
+        email,
+        password,
       });
 
       if (created) {
