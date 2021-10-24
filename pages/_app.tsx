@@ -10,6 +10,7 @@ function ApplicationRender({ Component, pageProps }: AppInterface) {
   return (
     <>
       <Head>
+        <title>Lançamentos - V1</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"

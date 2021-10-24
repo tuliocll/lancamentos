@@ -77,7 +77,6 @@ export default async function listAllService({
       content: allDebits,
     };
   } catch (err) {
-    console.log(err);
     return false;
   }
 }

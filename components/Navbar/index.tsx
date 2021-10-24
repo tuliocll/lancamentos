@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import {
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  FileTextOutlined,
+  FundProjectionScreenOutlined,
+  UserAddOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const { Sider } = Layout;
 
@@ -15,27 +18,36 @@ export default function Navbar({ collapsed }: { collapsed: boolean }) {
   const [selectedKey, setSelectedKey] = useState("/home");
 
   const menus = [
-    // {
-    //   name: "Inicio",
-    //   path: "/home",
-    //   icon: <UserOutlined />,
-    // },
     {
       name: "Ver despesa",
       path: "/debits",
-      icon: <VideoCameraOutlined />,
+      icon: <FundProjectionScreenOutlined />,
     },
     {
       name: "Lançar despesa",
       path: "/debits/new",
-      icon: <VideoCameraOutlined />,
+      icon: <FileTextOutlined />,
     },
-    // {
-    //   name: "Sair",
-    //   path: "/logout",
-    //   icon: <UploadOutlined />,
-    // },
+    {
+      name: "Cadastrar usuário",
+      path: "/users/new",
+      icon: <UserAddOutlined />,
+    },
+    {
+      name: "Ver usuários",
+      path: "/users",
+      icon: <UserOutlined />,
+    },
+    {
+      name: "Sair",
+      path: "/logout",
+      icon: <LogoutOutlined className="danger" />,
+    },
   ];
+
+  function handleSignout() {
+    signOut();
+  }
 
   useEffect(() => {
     setSelectedKey(router.pathname);
@@ -43,18 +55,30 @@ export default function Navbar({ collapsed }: { collapsed: boolean }) {
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
-      <div className="logo">Sistema Lançamento</div>
+      <div className="logo">{collapsed ? "LAN" : "LANÇAMENTOS"}</div>
       <Menu
         theme="dark"
         mode="inline"
         defaultSelectedKeys={[selectedKey]}
         selectedKeys={[selectedKey]}
       >
-        {menus.map((menu) => (
-          <Menu.Item key={menu.path} icon={menu.icon}>
-            <Link href={menu.path}>{menu.name}</Link>
-          </Menu.Item>
-        ))}
+        {menus.map((menu) => {
+          if (menu.path === "/logout") {
+            return (
+              <Menu.Item key={menu.path} icon={menu.icon}>
+                <a className="danger" onClick={handleSignout}>
+                  {menu.name}
+                </a>
+              </Menu.Item>
+            );
+          }
+
+          return (
+            <Menu.Item key={menu.path} icon={menu.icon}>
+              <Link href={menu.path}>{menu.name}</Link>
+            </Menu.Item>
+          );
+        })}
       </Menu>
     </Sider>
   );

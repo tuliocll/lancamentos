@@ -9,7 +9,6 @@ export default async function createService(user: Partial<User>) {
 
     return true;
   } catch (err) {
-    console.log(err);
     return false;
   }
 }

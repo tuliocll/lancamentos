@@ -41,8 +41,6 @@ export default function New() {
   }>("/api/peoples", fetcher);
 
   async function onFinish(values: debit) {
-    console.log("Received values of form: ", values.expiry.toISOString());
-
     const response = await fetch("/api/debits", {
       method: "POST",
       headers: {

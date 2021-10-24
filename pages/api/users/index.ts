@@ -42,8 +42,6 @@ export default async function handleStatus(
         });
       }
 
-      console.log(name, email);
-
       const created = await create({
         name,
         email,
