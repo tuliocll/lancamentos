@@ -46,6 +46,7 @@ Achei interessante deixar o projeto aberto caso alguém queira usar para algum o
 - [x] Filtros e buscas em relatorios
 - [ ] Filtros e buscas no excel
 - [ ] Pagina de 404
+- [ ] Adicionar Sentry para captura de erros
 
 ## Rodando
 

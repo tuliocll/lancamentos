@@ -38,11 +38,17 @@ a {
 }
 
 .logo {
-  height: 32px;
+  height: 42px;
   margin: 16px;
-  background: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: rgb(255, 255, 255);
 }
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+
+.danger {
+  color: rgb(240, 116, 116) !important;
 }

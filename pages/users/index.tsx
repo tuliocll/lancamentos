@@ -11,8 +11,6 @@ export default function ListUsers() {
     getAllUsersService("/api/users")
   );
 
-  const [deletePopup, setDeletePopup] = useState(false);
-
   const [page, setPage] = useState(1);
   const [totalRegisters, setTotalRegisters] = useState(0);
   const [size, setSize] = useState(5);
@@ -45,7 +43,7 @@ export default function ListUsers() {
               okText="Sim"
               cancelText="Não"
             >
-              <a>Deletar</a>
+              <a className="danger">Deletar</a>
             </Popconfirm>
             <a onClick={() => handleEdit(record.id)}>Editar</a>
           </Space>
