@@ -40,8 +40,6 @@ export default function NewUser() {
   async function getUser() {
     const response = await getOneUserService(Number(id));
 
-    console.log(response);
-
     if (!response) {
       window.location.href = "/users";
       return;

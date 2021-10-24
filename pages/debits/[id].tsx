@@ -49,8 +49,6 @@ export default function EditUser() {
   }>(`/api/debits/${id}`, fetcher);
 
   async function onUpdate(values: debit) {
-    console.log("Received values of form: ", values.expiry.toISOString());
-
     const response = await fetch(`/api/debits/${id}`, {
       method: "PUT",
       headers: {

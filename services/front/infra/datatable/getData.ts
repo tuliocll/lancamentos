@@ -13,8 +13,6 @@ export function getData<DataType extends object>({
     return api(path).then((response) => response.json());
   }
 
-  console.log(query.filters);
-
   let filtersQuery = "";
   query.filters.forEach((filter) => {
     filtersQuery = `${filtersQuery}filterFields=${filter.column.field}&filterValues=${filter.value}&`;

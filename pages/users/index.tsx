@@ -37,7 +37,6 @@ export default function ListUsers() {
       title: "Ação",
       key: "action",
       render: (text: any, record: any) => {
-        console.log(record, "click");
         return (
           <Space size="middle">
             <Popconfirm

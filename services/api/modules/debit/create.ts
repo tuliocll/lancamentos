@@ -59,7 +59,6 @@ export default async function createService({
 
     return true;
   } catch (err) {
-    console.log(err);
     return false;
   }
 }

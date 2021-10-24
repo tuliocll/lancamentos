@@ -35,7 +35,6 @@ export default async function listAllService(
 
     return allDebits;
   } catch (err) {
-    console.log("erro", err);
     return false;
   }
 }
