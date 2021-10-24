@@ -1,8 +1,7 @@
 import prisma from "../../../../lib/prisma";
+import { User } from ".prisma/client";
 
-type UserType = typeof prisma.user;
-
-export default async function createService(user: UserType) {
+export default async function createService(user: Partial<User>) {
   try {
     await prisma.user.create({
       data: user,
