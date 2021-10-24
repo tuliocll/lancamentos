@@ -28,6 +28,7 @@ export type DatatableType<T extends object> = {
   title?: string;
   columns: Column<T>[];
   actions?: Action<T>[];
+  onChangeFilter?: (filter: Filter<T>[]) => void;
 };
 
 export type DatatableRefType = {
@@ -35,7 +36,7 @@ export type DatatableRefType = {
 };
 
 const Datatable = <DataType extends object>(
-  { path, columns, actions, title }: DatatableType<DataType>,
+  { path, columns, actions, title, onChangeFilter }: DatatableType<DataType>,
   ref: Ref<DatatableRefType>
 ) => {
   const [query, setQuery] = useState<Partial<Query<DataType>>>();
@@ -94,6 +95,9 @@ const Datatable = <DataType extends object>(
 
   function handleFilterChange(filter: Filter<DataType>[]) {
     setFilters(filter);
+    if (onChangeFilter) {
+      onChangeFilter(filter);
+    }
   }
 
   useEffect(() => {
