@@ -1,15 +1,31 @@
 import prisma from "../../../../lib/prisma";
 
-export default async function getOneService(id: number) {
+export default async function getOneService({
+  id,
+  email,
+}: {
+  id?: number;
+  email?: string;
+}) {
   try {
-    const user = await prisma.user.findUnique({
-      where: {
-        id,
-      },
-    });
+    if (email) {
+      const user = await prisma.user.findUnique({
+        where: {
+          email,
+        },
+      });
 
-    return user;
+      return user;
+    } else {
+      const user = await prisma.user.findUnique({
+        where: {
+          id,
+        },
+      });
+
+      return user;
+    }
   } catch (err) {
-    return false;
+    return undefined;
   }
 }

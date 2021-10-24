@@ -16,7 +16,10 @@ export default async function api(url: string, options?: RequestInit) {
 
   const response = await fetch(url, {
     ...options,
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
   });
 
   sessionInterceptor(response);
