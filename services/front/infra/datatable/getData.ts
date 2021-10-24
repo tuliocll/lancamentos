@@ -13,7 +13,12 @@ export function getData<DataType extends object>({
     return api(path).then((response) => response.json());
   }
 
-  //TODO: pegar filters e transformar em query params
+  console.log(query.filters);
+
+  let filtersQuery = "";
+  query.filters.forEach((filter) => {
+    filtersQuery = `${filtersQuery}filterFields=${filter.column.field}&filterValues=${filter.value}&`;
+  });
 
   const orderBy = query.orderBy ? `&sortBy=${query.orderBy.field}` : "";
   const orderDirection = query.orderDirection
@@ -25,7 +30,7 @@ export function getData<DataType extends object>({
   const pageSize = query?.pageSize;
   const separator = path.search(/\?/) > -1 ? "&" : "?";
 
-  const url = `${path}${separator}page=${page}&size=${pageSize}${orderBy}${orderDirection}${search}`;
+  const url = `${path}${separator}page=${page}&size=${pageSize}${orderBy}${orderDirection}${search}&${filtersQuery}`;
 
   return api(url).then((response) => response.json());
 }
