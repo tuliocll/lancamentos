@@ -6,6 +6,8 @@ import {
   FundProjectionScreenOutlined,
   UserAddOutlined,
   LogoutOutlined,
+  CloudUploadOutlined,
+  CloudServerOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -37,6 +39,16 @@ export default function Navbar({ collapsed }: { collapsed: boolean }) {
       name: "Ver usuários",
       path: "/users",
       icon: <UserOutlined />,
+    },
+    {
+      name: "Cadastrar serviço",
+      path: "/services/new",
+      icon: <CloudUploadOutlined />,
+    },
+    {
+      name: "Ver serviços",
+      path: "/services",
+      icon: <CloudServerOutlined />,
     },
     {
       name: "Sair",

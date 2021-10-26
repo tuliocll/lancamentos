@@ -36,10 +36,25 @@ Achei interessante deixar o projeto aberto caso alguém queira usar para algum o
 - [ ] Atualizar receitas
 - [ ] Deletar receitas
 - [ ] Cadastrar pessoas
+- [ ] Listar pessoas
+- [ ] Atualizar pessoas
+- [ ] Deletar pessoas
 - [ ] Cadastrar status
+- [ ] Listar status
+- [ ] Atualizar status
+- [ ] Deletar status
 - [ ] Cadastrar funcionarios
+- [ ] Listar funcionarios
+- [ ] Atualizar funcionarios
+- [ ] Deletar funcionarios
 - [ ] Cadastrar Operações
-- [ ] Cadastrar serviços
+- [ ] Listar Operações
+- [ ] Atualizar Operações
+- [ ] Deletar Operações
+- [x] Cadastrar serviços
+- [x] Listar serviços
+- [x] Atualizar serviços
+- [x] Deletar serviços
 - [x] Relatorio de despesa
 - [x] Exportar despesa em PDF
 - [x] Exportar despesa em XLS
