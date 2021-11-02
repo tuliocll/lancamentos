@@ -7,7 +7,7 @@ import { debit } from ".prisma/client";
 import { useRouter } from "next/router";
 
 const columnsInitialState: Column<any>[] = [
-  { title: "Serviço", field: "service" },
+  { title: "Serviço", field: "service", hiddenByColumnsButton: true },
   { title: "Vencimento", field: "expiry", type: "date", filtering: false },
   { title: "Fornecedor", field: "provider" },
   { title: "Descrição", field: "description" },

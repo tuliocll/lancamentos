@@ -118,6 +118,8 @@ const Datatable = <DataType extends object>(
       //@ts-ignore
       tableRef.current.dataManager.searchText = "";
     }
+
+    console.log(data, "teste");
   }, [data]);
 
   useEffect(() => {
