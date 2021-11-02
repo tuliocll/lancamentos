@@ -14,7 +14,8 @@ export function getData<DataType extends object>({
   }
 
   let filtersQuery = "";
-  query.filters.forEach((filter) => {
+
+  query?.filters?.forEach((filter) => {
     filtersQuery = `${filtersQuery}filterFields=${filter.column.field}&filterValues=${filter.value}&`;
   });
 
@@ -29,6 +30,8 @@ export function getData<DataType extends object>({
   const separator = path.search(/\?/) > -1 ? "&" : "?";
 
   const url = `${path}${separator}page=${page}&size=${pageSize}${orderBy}${orderDirection}${search}&${filtersQuery}`;
+
+  console.log(url, "la vai");
 
   return api(url).then((response) => response.json());
 }

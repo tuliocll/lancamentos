@@ -22,6 +22,8 @@ export default async function api(url: string, options?: RequestInit) {
     },
   });
 
+  console.log(response);
+
   sessionInterceptor(response);
 
   return response;
