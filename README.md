@@ -71,6 +71,20 @@ Achei interessante deixar o projeto aberto caso alguém queira usar para algum o
 
 - Crie um `.env` com base no `.env.example`.
 
+- Instale o [node-jose-tools](https://github.com/phish108/node-jose-tools) globalmente para gerar um certificado para o JWT:
+
+```bash
+npm install -g node-jose-tools
+```
+
+- Gere uma nova chave com o comendo:
+
+```bash
+jose newkey -s 256 -t oct -a HS512
+```
+
+- Copie o JSON de saida completo e cole na variavel `JWT_SIGNING_PRIVATE_KEY` no `.env`
+
 - Rode em modo de desenvolvimento com: `yarn dev`
 
 ## Tecnologias utilizadas
