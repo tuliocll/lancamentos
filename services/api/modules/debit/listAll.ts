@@ -8,6 +8,7 @@ type ListAllType = {
   search: string;
   initialDate: string;
   finalDate: string;
+  dateField: string;
   filterFields: string[] | undefined;
   filterValues: string[] | undefined;
 };
@@ -22,6 +23,7 @@ export default async function listAllService({
   size,
   filterFields,
   filterValues,
+  dateField,
 }: ListAllType) {
   try {
     const fixPage = page > 0 ? page - 1 : 0;
@@ -57,6 +59,10 @@ export default async function listAllService({
       where: {
         service: {
           contains: search,
+        },
+        [dateField]: {
+          gte: initialDate,
+          lte: finalDate,
         },
         ...filters,
       },
