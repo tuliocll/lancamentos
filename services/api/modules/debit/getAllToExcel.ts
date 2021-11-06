@@ -22,10 +22,6 @@ export default async function listAllService(
           {
             [whereColumn]: {
               gte: new Date(initialDate),
-            },
-          },
-          {
-            [whereColumn]: {
               lte: new Date(finalDate),
             },
           },

@@ -93,4 +93,4 @@ export default function ListDebits() {
   );
 }
 
-ListDebits.auth = true;
+ListDebits.auth = false;

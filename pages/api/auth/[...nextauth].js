@@ -11,6 +11,12 @@ export default NextAuth({
     jwt: true,
     maxAge: 30 * 24 * 60 * 60,
   },
+  jwt: {
+    signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
+    verificationOptions: {
+      algorithms: ["HS512"],
+    },
+  },
   theme: {
     logo: "https://user-images.githubusercontent.com/28990589/34908095-57a48cce-f83f-11e7-87d2-7579d0be5740.jpg",
     colorScheme: "light",

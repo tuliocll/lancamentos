@@ -12,10 +12,12 @@ import MaterialTable, {
   Column,
   Action,
   Filter,
+  MTableToolbar,
 } from "@material-table/core";
 import useSwr from "swr";
 
 import { getData } from "../../services/front/infra/datatable/getData";
+import Header from "./components/Header";
 
 export type ResponseBody<T> = {
   content: T[];
@@ -100,6 +102,10 @@ const Datatable = <DataType extends object>(
     }
   }
 
+  function handleChangeDate(initialDate: string, finalDate: string) {
+    console.log(initialDate, finalDate);
+  }
+
   useEffect(() => {
     setQuery({
       page,
@@ -118,8 +124,6 @@ const Datatable = <DataType extends object>(
       //@ts-ignore
       tableRef.current.dataManager.searchText = "";
     }
-
-    console.log(data, "teste");
   }, [data]);
 
   useEffect(() => {
@@ -144,6 +148,13 @@ const Datatable = <DataType extends object>(
         setPage(0);
         setSearch(text);
       }}
+      components={{
+        Toolbar: (props) => (
+          <>
+            <MTableToolbar {...props} /> <Header onChange={handleChangeDate} />
+          </>
+        ),
+      }}
       options={{
         actionsColumnIndex: -1,
         loadingType: "linear",
@@ -151,6 +162,7 @@ const Datatable = <DataType extends object>(
         paginationType: "stepped",
         filtering: true,
         columnsButton: true,
+        search: false,
         exportMenu: [
           {
             label: "Export PDF",

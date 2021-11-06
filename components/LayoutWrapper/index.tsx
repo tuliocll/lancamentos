@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
@@ -12,10 +12,17 @@ export default function LayoutWrapper({
   children: React.ReactChild;
 }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [render, setRender] = useState(false);
 
   function toggle() {
     setCollapsed(!collapsed);
   }
+
+  useEffect(() => {
+    setRender(true);
+  }, []);
+
+  if (!render) return null;
 
   return (
     <Layout>
